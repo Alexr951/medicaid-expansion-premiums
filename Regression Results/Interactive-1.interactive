@@ -1,0 +1,112 @@
+
+Data Shape: (55671, 12)
+
+Missing Values:
+ Year                                    0
+ACA_State                               0
+Post_ACA                                0
+ACA_x_Post                              0
+WLFR_PREMIUM_RCVD_AMT_PER_CAPITA        0
+WLFR_TOT_CHARGES_PAID_AMT_PER_CAPITA    0
+Inflation                               0
+Inflation_annual_change                 0
+S&P_Yearly_Growth                       0
+Federal_Funds_Rate_Average_Yield        0
+Log_Premium                             0
+Log_Charges                             0
+dtype: int64
+
+Summary Statistics:
+                Year     ACA_State      Post_ACA    ACA_x_Post  \
+count  55671.000000  55671.000000  55671.000000  55671.000000   
+mean    2010.595337      0.691114      0.480555      0.307377   
+std        6.822652      0.462038      0.499626      0.461411   
+min     2001.000000      0.000000      0.000000      0.000000   
+25%     2005.000000      0.000000      0.000000      0.000000   
+50%     2010.000000      1.000000      0.000000      0.000000   
+75%     2016.000000      1.000000      1.000000      1.000000   
+max     2023.000000      1.000000      1.000000      1.000000   
+
+       WLFR_PREMIUM_RCVD_AMT_PER_CAPITA  WLFR_TOT_CHARGES_PAID_AMT_PER_CAPITA  \
+count                      5.567100e+04                          5.567100e+04   
+mean                       4.367475e+03                          6.964918e+03   
+std                        6.116263e+04                          1.384253e+06   
+min                        2.700626e-05                          6.157635e-04   
+25%                        4.605129e+02                          5.249131e+01   
+50%                        2.801627e+03                          2.803864e+02   
+75%                        5.135636e+03                          9.022021e+02   
+max                        8.981869e+06                          3.266040e+08   
+
+          Inflation  Inflation_annual_change  S&P_Yearly_Growth  \
+count  55671.000000             55671.000000       55671.000000   
+mean       0.024878                -0.000260           5.475276   
+std        0.015744                 0.016917          18.366767   
+min       -0.003600                -0.041900         -38.490000   
+25%        0.015900                -0.006300          -6.240000   
+50%        0.022700                -0.001700           9.540000   
+75%        0.032300                 0.008700          23.450000   
+max        0.080000                 0.034600          29.600000   
+
+       Federal_Funds_Rate_Average_Yield   Log_Premium   Log_Charges  
+count                      55671.000000  55671.000000  55671.000000  
+mean                           0.017800      7.243980      5.330767  
+std                            0.017307      1.848912      2.077695  
+min                            0.000800    -10.519442     -7.392648  
+25%                            0.001600      6.132341      3.960648  
+50%                            0.011300      7.937955      5.636168  
+75%                            0.032200      8.543959      6.804839  
+max                            0.050300     16.010719     19.604259  
+
+Results for Premium Received (Experience-Rated Plans):
+                                  Coefficient  Std Error      t-stat  \
+const                                7.198970   0.025213  285.530316   
+ACA_State                           -0.335350   0.025148  -13.335002   
+Post_ACA                             0.472023   0.026756   17.641860   
+ACA_x_Post                           0.082578   0.031589    2.614118   
+Inflation                            4.977947   0.779106    6.389307   
+Inflation_annual_change             -3.849609   0.643241   -5.984708   
+S&P_Yearly_Growth                    0.003403   0.000469    7.261170   
+Federal_Funds_Rate_Average_Yield    -6.680602   0.696370   -9.593467   
+
+                                       p-value  CI Lower  CI Upper  
+const                             0.000000e+00  7.149555  7.248386  
+ACA_State                         1.448514e-40 -0.384639 -0.286061  
+Post_ACA                          1.175273e-69  0.419582  0.524463  
+ACA_x_Post                        8.945809e-03  0.020664  0.144492  
+Inflation                         1.666395e-10  3.450927  6.504966  
+Inflation_annual_change           2.167781e-09 -5.110338 -2.588880  
+S&P_Yearly_Growth                 3.837555e-13  0.002485  0.004322  
+Federal_Funds_Rate_Average_Yield  8.517392e-22 -8.045463 -5.315742  
+
+R-squared: 0.04362655936174786
+Adjusted R-squared: 0.04350628891127872
+
+F-statistic: 380.7084503020798
+Prob (F-statistic): 0.0
+
+Results for Total Charges Paid (Non-Experience-Rated Plans):
+                                  Coefficient  Std Error      t-stat  \
+const                                4.251346   0.030465  139.547874   
+ACA_State                            0.754043   0.028369   26.579469   
+Post_ACA                             0.591931   0.034877   16.971817   
+ACA_x_Post                          -0.153902   0.038371   -4.010838   
+Inflation                            6.979188   0.930124    7.503505   
+Inflation_annual_change             -1.813180   0.745825   -2.431105   
+S&P_Yearly_Growth                    0.000173   0.000530    0.325961   
+Federal_Funds_Rate_Average_Yield     8.207756   0.765621   10.720390   
+
+                                        p-value  CI Lower  CI Upper  
+const                              0.000000e+00  4.191636  4.311057  
+ACA_State                         1.172660e-155  0.698440  0.809646  
+Post_ACA                           1.327594e-64  0.523573  0.660289  
+ACA_x_Post                         6.050368e-05 -0.229108 -0.078695  
+Inflation                          6.213377e-14  5.156179  8.802197  
+Inflation_annual_change            1.505284e-02 -3.274970 -0.351389  
+S&P_Yearly_Growth                  7.444541e-01 -0.000866  0.001211  
+Federal_Funds_Rate_Average_Yield   8.165832e-27  6.707166  9.708345  
+
+R-squared: 0.03690402702749962
+Adjusted R-squared: 0.036782911172967836
+
+F-statistic: 297.79940862116376
+Prob (F-statistic): 0.0

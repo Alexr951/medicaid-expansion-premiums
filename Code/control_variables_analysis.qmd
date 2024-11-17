@@ -1,0 +1,78 @@
+---
+title: Econ490_ControlVar_Analysis_2
+date: '2024'
+description: NA
+categories:
+  - Python
+format:
+  html: default
+  ipynb:
+    jupyter:
+      kernelspec:
+        display_name: Python
+        language: python3
+        name: python3
+jupyter:
+  jupytext:
+    text_representation:
+      extension: .qmd
+      format_name: quarto
+      format_version: '1.0'
+      jupytext_version: 1.16.1
+  kernelspec:
+    display_name: Python 3 (ipykernel)
+    language: Python
+    name: python3
+---
+```{python}
+
+import pandas as pd
+
+# Path to the files
+path = r"C:/Users/alexr/OneDrive/Desktop/WORK/490_thesis/Final"
+
+# Open the controls  file
+controls_data = pd.read_excel(f"{path}/Controls_Dataset_2.xlsx")
+
+print("\nFirst few rows of Controls_Dataset_2.xlsx:")
+print(controls_data.head())
+
+```
+
+
+
+```{python}
+
+import pandas as pd
+import numpy as np
+
+# Path to the file
+path = r"C:/Users/alexr/OneDrive/Desktop/WORK/490_thesis/Final"
+
+# Open the controls file
+controls_data = pd.read_excel(f"{path}/Controls_Dataset_2.xlsx")
+
+# List of variables to analyze
+variables = ['Inflation', 'Inflation_annual_change', 'S&P_Yearly_Growth', 'Federal_Funds_Rate_Average_Yield']
+
+# Calculate statistics for each variable
+for var in variables:
+    if var in controls_data.columns:
+        mean = controls_data[var].mean()
+        std = controls_data[var].std()
+        min_val = controls_data[var].min()
+        max_val = controls_data[var].max()
+        
+        print(f"\nStatistics for {var}:")
+        print(f"Mean: {mean:.4f}")
+        print(f"Standard Deviation: {std:.4f}")
+        print(f"Minimum: {min_val:.4f}")
+        print(f"Maximum: {max_val:.4f}")
+    else:
+        print(f"\nVariable '{var}' not found in the dataset.")
+
+# Display summary statistics using describe() method
+print("\nSummary Statistics:")
+print(controls_data[variables].describe())
+
+```
