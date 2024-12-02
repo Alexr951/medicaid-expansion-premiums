@@ -1,0 +1,1123 @@
+---
+title: Econ490_Final_Analysis
+date: '2024'
+description: NA
+categories:
+  - Python
+format:
+  html: default
+  ipynb:
+    jupyter:
+      kernelspec:
+        display_name: Python
+        language: python3
+        name: python3
+jupyter:
+  jupytext:
+    text_representation:
+      extension: .qmd
+      format_name: quarto
+      format_version: '1.0'
+      jupytext_version: 1.16.1
+  kernelspec:
+    display_name: Python 3 (ipykernel)
+    language: Python
+    name: python3
+---
+Import dataset and print first few rows to check
+```{python}
+
+import pandas as pd
+
+# Path to the files
+path = r"C:/Users/alexr/OneDrive/Desktop/WORK/490_thesis/Final"
+
+# Open the first file
+main_data = pd.read_excel(f"{path}/processed_combined_data_1999-2023.xlsx")
+
+# Print the first few rows of each dataframe to verify they've been loaded correctly
+print("First few rows of processed_combined_data_1999-2023.xlsx:")
+print(main_data.head())
+
+```
+
+Next blocks of code are for summary statistics for variables across all 24 sheets 
+- The variable name is in the first comment on top of each code block 
+
+```{python}
+#INS_PRSN_COVERED_EOY_CNT 
+
+import pandas as pd
+import numpy as np
+
+# Path to the file
+path = r"C:/Users/alexr/OneDrive/Desktop/WORK/490_thesis/Final"
+
+# Read all sheets from the Excel file
+excel_file = pd.ExcelFile(f"{path}/processed_combined_data_1999-2023.xlsx")
+
+# Initialize lists to store results
+sheet_stats = []
+
+variable = 'INS_PRSN_COVERED_EOY_CNT' #CHANGE HERE
+
+# Loop through all sheets
+for sheet_name in excel_file.sheet_names:
+    # Read each sheet
+    df = pd.read_excel(excel_file, sheet_name=sheet_name)
+    
+    # Check if the variable exists in this sheet
+    if variable in df.columns:
+        stats = df[variable].agg(['mean', 'std', 'min', 'max'])
+        stats['sheet'] = sheet_name
+        sheet_stats.append(stats)
+
+# Combine all stats
+all_stats = pd.DataFrame(sheet_stats)
+
+# Calculate average statistics across sheets
+avg_stats = all_stats[['mean', 'std', 'min', 'max']].mean()
+
+# Calculate overall statistics
+overall_mean = avg_stats['mean']
+overall_std = avg_stats['std']
+overall_min = all_stats['min'].min()
+overall_max = all_stats['max'].max()
+
+# Print the results
+print(f"Average Statistics for {variable} across all sheets:")
+print(f"Mean of Means: {overall_mean:.2f}")
+print(f"Mean of Standard Deviations: {overall_std:.2f}")
+print(f"Overall Minimum: {overall_min:.2f}")
+print(f"Overall Maximum: {overall_max:.2f}")
+
+# Print statistics for each sheet
+print("\nStatistics for each sheet:")
+for _, row in all_stats.iterrows():
+    print(f"\nSheet: {row['sheet']}")
+    print(f"Mean: {row['mean']:.2f}")
+    print(f"Standard Deviation: {row['std']:.2f}")
+    print(f"Minimum: {row['min']:.2f}")
+    print(f"Maximum: {row['max']:.2f}")
+
+
+```
+
+```{python}
+#WLFR_PREMIUM_RCVD_AMT
+
+import pandas as pd
+import numpy as np
+
+# Path to the file
+path = r"C:/Users/alexr/OneDrive/Desktop/WORK/490_thesis/Final"
+
+# Read all sheets from the Excel file
+excel_file = pd.ExcelFile(f"{path}/processed_combined_data_1999-2023.xlsx")
+
+# Initialize lists to store results
+sheet_stats = []
+
+variable = 'WLFR_PREMIUM_RCVD_AMT' #CHANGE HERE
+
+# Loop through all sheets
+for sheet_name in excel_file.sheet_names:
+    # Read each sheet
+    df = pd.read_excel(excel_file, sheet_name=sheet_name)
+    
+    # Check if the variable exists in this sheet
+    if variable in df.columns:
+        stats = df[variable].agg(['mean', 'std', 'min', 'max'])
+        stats['sheet'] = sheet_name
+        sheet_stats.append(stats)
+
+# Combine all stats
+all_stats = pd.DataFrame(sheet_stats)
+
+# Calculate average statistics across sheets
+avg_stats = all_stats[['mean', 'std', 'min', 'max']].mean()
+
+# Calculate overall statistics
+overall_mean = avg_stats['mean']
+overall_std = avg_stats['std']
+overall_min = all_stats['min'].min()
+overall_max = all_stats['max'].max()
+
+# Print the results
+print(f"Average Statistics for {variable} across all sheets:")
+print(f"Mean of Means: {overall_mean:.2f}")
+print(f"Mean of Standard Deviations: {overall_std:.2f}")
+print(f"Overall Minimum: {overall_min:.2f}")
+print(f"Overall Maximum: {overall_max:.2f}")
+
+# Print statistics for each sheet
+print("\nStatistics for each sheet:")
+for _, row in all_stats.iterrows():
+    print(f"\nSheet: {row['sheet']}")
+    print(f"Mean: {row['mean']:.2f}")
+    print(f"Standard Deviation: {row['std']:.2f}")
+    print(f"Minimum: {row['min']:.2f}")
+    print(f"Maximum: {row['max']:.2f}")
+
+
+```
+
+```{python}
+#WLFR_TOT_CHARGES_PAID_AMT
+
+import pandas as pd
+import numpy as np
+
+# Path to the file
+path = r"C:/Users/alexr/OneDrive/Desktop/WORK/490_thesis/Final"
+
+# Read all sheets from the Excel file
+excel_file = pd.ExcelFile(f"{path}/processed_combined_data_1999-2023.xlsx")
+
+# Initialize lists to store results
+sheet_stats = []
+
+variable = 'WLFR_TOT_CHARGES_PAID_AMT' #CHANGE HERE
+
+# Loop through all sheets
+for sheet_name in excel_file.sheet_names:
+    # Read each sheet
+    df = pd.read_excel(excel_file, sheet_name=sheet_name)
+    
+    # Check if the variable exists in this sheet
+    if variable in df.columns:
+        stats = df[variable].agg(['mean', 'std', 'min', 'max'])
+        stats['sheet'] = sheet_name
+        sheet_stats.append(stats)
+
+# Combine all stats
+all_stats = pd.DataFrame(sheet_stats)
+
+# Calculate average statistics across sheets
+avg_stats = all_stats[['mean', 'std', 'min', 'max']].mean()
+
+# Calculate overall statistics
+overall_mean = avg_stats['mean']
+overall_std = avg_stats['std']
+overall_min = all_stats['min'].min()
+overall_max = all_stats['max'].max()
+
+# Print the results
+print(f"Average Statistics for {variable} across all sheets:")
+print(f"Mean of Means: {overall_mean:.2f}")
+print(f"Mean of Standard Deviations: {overall_std:.2f}")
+print(f"Overall Minimum: {overall_min:.2f}")
+print(f"Overall Maximum: {overall_max:.2f}")
+
+# Print statistics for each sheet
+print("\nStatistics for each sheet:")
+for _, row in all_stats.iterrows():
+    print(f"\nSheet: {row['sheet']}")
+    print(f"Mean: {row['mean']:.2f}")
+    print(f"Standard Deviation: {row['std']:.2f}")
+    print(f"Minimum: {row['min']:.2f}")
+    print(f"Maximum: {row['max']:.2f}")
+
+
+```
+
+```{python}
+#WLFR_PREMIUM_RCVD_AMT_PER_CAPITA 
+
+import pandas as pd
+import numpy as np
+
+# Path to the file
+path = r"C:/Users/alexr/OneDrive/Desktop/WORK/490_thesis/Final"
+
+# Read all sheets from the Excel file
+excel_file = pd.ExcelFile(f"{path}/processed_combined_data_1999-2023.xlsx")
+
+# Initialize lists to store results
+sheet_stats = []
+
+variable = 'WLFR_PREMIUM_RCVD_AMT_PER_CAPITA' #CHANGE HERE
+
+# Loop through all sheets
+for sheet_name in excel_file.sheet_names:
+    # Read each sheet
+    df = pd.read_excel(excel_file, sheet_name=sheet_name)
+    
+    # Check if the variable exists in this sheet
+    if variable in df.columns:
+        stats = df[variable].agg(['mean', 'std', 'min', 'max'])
+        stats['sheet'] = sheet_name
+        sheet_stats.append(stats)
+
+# Combine all stats
+all_stats = pd.DataFrame(sheet_stats)
+
+# Calculate average statistics across sheets
+avg_stats = all_stats[['mean', 'std', 'min', 'max']].mean()
+
+# Calculate overall statistics
+overall_mean = avg_stats['mean']
+overall_std = avg_stats['std']
+overall_min = all_stats['min'].min()
+overall_max = all_stats['max'].max()
+
+# Print the results
+print(f"Average Statistics for {variable} across all sheets:")
+print(f"Mean of Means: {overall_mean:.2f}")
+print(f"Mean of Standard Deviations: {overall_std:.2f}")
+print(f"Overall Minimum: {overall_min:.2f}")
+print(f"Overall Maximum: {overall_max:.2f}")
+
+# Print statistics for each sheet
+print("\nStatistics for each sheet:")
+for _, row in all_stats.iterrows():
+    print(f"\nSheet: {row['sheet']}")
+    print(f"Mean: {row['mean']:.2f}")
+    print(f"Standard Deviation: {row['std']:.2f}")
+    print(f"Minimum: {row['min']:.2f}")
+    print(f"Maximum: {row['max']:.2f}")
+
+
+```
+
+
+```{python}
+#WLFR_TOT_CHARGES_PAID_AMT_PER_CAPITA 
+
+import pandas as pd
+import numpy as np
+
+# Path to the file
+path = r"C:/Users/alexr/OneDrive/Desktop/WORK/490_thesis/Final"
+
+# Read all sheets from the Excel file
+excel_file = pd.ExcelFile(f"{path}/processed_combined_data_1999-2023.xlsx")
+
+# Initialize lists to store results
+sheet_stats = []
+
+variable = 'WLFR_TOT_CHARGES_PAID_AMT_PER_CAPITA' #CHANGE HERE
+
+# Loop through all sheets
+for sheet_name in excel_file.sheet_names:
+    # Read each sheet
+    df = pd.read_excel(excel_file, sheet_name=sheet_name)
+    
+    # Check if the variable exists in this sheet
+    if variable in df.columns:
+        stats = df[variable].agg(['mean', 'std', 'min', 'max'])
+        stats['sheet'] = sheet_name
+        sheet_stats.append(stats)
+
+# Combine all stats
+all_stats = pd.DataFrame(sheet_stats)
+
+# Calculate average statistics across sheets
+avg_stats = all_stats[['mean', 'std', 'min', 'max']].mean()
+
+# Calculate overall statistics
+overall_mean = avg_stats['mean']
+overall_std = avg_stats['std']
+overall_min = all_stats['min'].min()
+overall_max = all_stats['max'].max()
+
+# Print the results
+print(f"Average Statistics for {variable} across all sheets:")
+print(f"Mean of Means: {overall_mean:.2f}")
+print(f"Mean of Standard Deviations: {overall_std:.2f}")
+print(f"Overall Minimum: {overall_min:.2f}")
+print(f"Overall Maximum: {overall_max:.2f}")
+
+# Print statistics for each sheet
+print("\nStatistics for each sheet:")
+for _, row in all_stats.iterrows():
+    print(f"\nSheet: {row['sheet']}")
+    print(f"Mean: {row['mean']:.2f}")
+    print(f"Standard Deviation: {row['std']:.2f}")
+    print(f"Minimum: {row['min']:.2f}")
+    print(f"Maximum: {row['max']:.2f}")
+
+
+```
+
+Graph of variables over time 
+
+```{python}
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Years from 1999 to 2023
+years = range(1999, 2024)
+
+# Data for WLFR_PREMIUM_RCVD_AMT_PER_CAPITA
+premium_means = [497355.78, 939.07, 359.62, 194.45, 325.31, 19583.29, 168.18, 141.19, 121.13, 165.78, 1425.80, 1257.54, 1596.44, 1544.61, 2014.55, 1742.20, 1776.61, 1915.42, 1850.59, 1896.44, 1995.18, 1993.55, 1991.22, 2038.80, 2228.83]
+premium_stds = [317606747.54, 541780.03, 106816.38, 14785.44, 133072.64, 13926898.04, 8377.70, 4452.28, 2310.33, 19261.62, 24341.72, 8262.34, 24915.15, 8423.88, 48778.85, 6340.56, 8188.22, 9067.84, 7464.64, 6763.25, 9843.62, 7876.00, 10507.68, 9124.72, 18194.21]
+
+# Data for WLFR_TOT_CHARGES_PAID_AMT_PER_CAPITA
+charges_means = [28918.82, 1527.29, 2016.48, 766527.49, 9099.69, 897.42, 966.36, 844.02, 994.66, 793.52, 1711.31, 1691.22, 1739.36, 1661.71, 1626.85, 1705.86, 1876.23, 1663.16, 1626.99, 1650.91, 6335.65, 1776.16, 1756.14, 1807.57, 1884.08]
+charges_stds = [10398198.55, 391694.24, 565370.25, 402739308.14, 6141702.06, 19440.03, 64025.14, 12238.34, 59988.12, 8165.67, 9164.84, 13390.94, 16902.01, 13166.47, 8861.45, 22300.12, 99118.41, 19051.76, 15425.41, 16690.08, 2302570.51, 15789.80, 24390.53, 17823.79, 23447.55]
+
+# Create the plot
+fig, ax = plt.subplots(figsize=(15, 8))
+
+# Plot WLFR_PREMIUM_RCVD_AMT_PER_CAPITA
+ax.errorbar(years, premium_means, yerr=premium_stds, fmt='o-', color='blue', ecolor='lightblue', capsize=5, label='Premium Received')
+
+# Plot WLFR_TOT_CHARGES_PAID_AMT_PER_CAPITA
+ax.errorbar(years, charges_means, yerr=charges_stds, fmt='o-', color='red', ecolor='lightcoral', capsize=5, label='Total Charges Paid')
+
+# Customize the plot
+ax.set_xlabel('Year')
+ax.set_ylabel('Amount per Capita')
+ax.set_title('WLFR Premium Received and Total Charges Paid per Capita (1999-2023)')
+ax.legend()
+
+# Use logarithmic scale for y-axis due to large variations
+ax.set_yscale('log')
+
+# Rotate x-axis labels for better readability
+plt.xticks(years, rotation=45)
+
+# Add grid for better readability
+ax.grid(True, which="both", ls="-", alpha=0.2)
+
+# Show the plot
+plt.tight_layout()
+plt.show()
+
+```
+
+
+```{python}
+
+import matplotlib.pyplot as plt
+import pandas as pd
+
+# Path to the file
+path = r"C:/Users/alexr/OneDrive/Desktop/WORK/490_thesis/Final"
+
+# Read all sheets from the Excel file
+excel_file = pd.ExcelFile(f"{path}/processed_combined_data_1999-2023.xlsx")
+
+# Initialize lists to store results
+years = range(1999, 2024)
+premium_means = []
+charges_means = []
+
+# Loop through all sheets and collect means
+for sheet_name in excel_file.sheet_names:
+    df = pd.read_excel(excel_file, sheet_name=sheet_name)
+    
+    if 'WLFR_PREMIUM_RCVD_AMT_PER_CAPITA' in df.columns:
+        premium_means.append(df['WLFR_PREMIUM_RCVD_AMT_PER_CAPITA'].mean())
+    
+    if 'WLFR_TOT_CHARGES_PAID_AMT_PER_CAPITA' in df.columns:
+        charges_means.append(df['WLFR_TOT_CHARGES_PAID_AMT_PER_CAPITA'].mean())
+
+# Create the plot
+fig, ax = plt.subplots(figsize=(12, 6))
+
+# Plot both lines
+ax.plot(years, premium_means, 'b-o', label='Premium Received')
+ax.plot(years, charges_means, 'r-o', label='Total Charges Paid')
+
+# Customize the plot
+ax.set_xlabel('Year')
+ax.set_ylabel('Amount per Capita')
+ax.set_title('WLFR Premium Received and Total Charges Paid per Capita (1999-2023)')
+ax.legend()
+ax.grid(True, alpha=0.3)
+
+# Rotate x-axis labels for better readability
+plt.xticks(years, rotation=45)
+
+# Adjust layout to prevent label cutoff
+plt.tight_layout()
+
+plt.show()
+
+```
+
+
+```{python}
+
+import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np
+
+# Path to the file
+path = r"C:/Users/alexr/OneDrive/Desktop/WORK/490_thesis/Final"
+
+# Read all sheets from the Excel file
+excel_file = pd.ExcelFile(f"{path}/processed_combined_data_1999-2023.xlsx")
+
+# Initialize lists to store results
+years = []
+premium_means = []
+charges_means = []
+
+# Function to remove outliers
+def remove_outliers(data, threshold=2.576):  # 2.576 corresponds to 99% confidence level
+    Q1 = np.percentile(data, 25)
+    Q3 = np.percentile(data, 75)
+    IQR = Q3 - Q1
+    lower_bound = Q1 - threshold * IQR
+    upper_bound = Q3 + threshold * IQR
+    return [x for x in data if lower_bound <= x <= upper_bound]
+
+# Loop through all sheets and collect means, skipping 1999
+for sheet_name in excel_file.sheet_names[1:]:  # Start from the second sheet (2000)
+    year = int(sheet_name.split('_')[1])  # Extract year from 'Year_YYYY' format
+    
+    df = pd.read_excel(excel_file, sheet_name=sheet_name)
+    
+    if 'WLFR_PREMIUM_RCVD_AMT_PER_CAPITA' in df.columns and 'WLFR_TOT_CHARGES_PAID_AMT_PER_CAPITA' in df.columns:
+        premium_mean = df['WLFR_PREMIUM_RCVD_AMT_PER_CAPITA'].mean()
+        charges_mean = df['WLFR_TOT_CHARGES_PAID_AMT_PER_CAPITA'].mean()
+        
+        years.append(year)
+        premium_means.append(premium_mean)
+        charges_means.append(charges_mean)
+
+# Remove outliers
+premium_means_clean = remove_outliers(premium_means)
+charges_means_clean = remove_outliers(charges_means)
+
+# Create a list of tuples with (year, premium, charge)
+data_tuples = list(zip(years, premium_means, charges_means))
+
+# Filter the data to keep only non-outlier points
+filtered_data = [
+    (year, premium, charge) for year, premium, charge in data_tuples
+    if premium in premium_means_clean and charge in charges_means_clean
+]
+
+# Unzip the filtered data
+years_clean, premium_means_clean, charges_means_clean = zip(*filtered_data)
+
+# Create the plot
+fig, ax = plt.subplots(figsize=(12, 6))
+
+# Plot both lines
+ax.plot(years_clean, premium_means_clean, 'b-o', label='Premium Received')
+ax.plot(years_clean, charges_means_clean, 'r-o', label='Total Charges Paid')
+
+# Customize the plot
+ax.set_xlabel('Year')
+ax.set_ylabel('Amount per Capita')
+ax.set_title('WLFR Premium Received and Total Charges Paid per Capita (2000-2023, outliers removed)')
+ax.legend()
+ax.grid(True, alpha=0.3)
+
+# Rotate x-axis labels for better readability
+plt.xticks(years_clean, rotation=45)
+
+# Adjust layout to prevent label cutoff
+plt.tight_layout()
+
+plt.show()
+
+
+```
+
+1% outliers removed, but keep all years
+
+```{python}
+import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np
+from scipy import stats
+
+# Path to the file
+path = r"C:/Users/alexr/OneDrive/Desktop/WORK/490_thesis/Final"
+
+# Read all sheets from the Excel file
+excel_file = pd.ExcelFile(f"{path}/processed_combined_data_1999-2023.xlsx")
+
+# Initialize lists to store results
+data = []
+
+# First, collect all data in a DataFrame
+for sheet_name in excel_file.sheet_names[1:]:  # Start from the second sheet (2000)
+    year = int(sheet_name.split('_')[1])
+    df = pd.read_excel(excel_file, sheet_name=sheet_name)
+    
+    if 'WLFR_PREMIUM_RCVD_AMT_PER_CAPITA' in df.columns and 'WLFR_TOT_CHARGES_PAID_AMT_PER_CAPITA' in df.columns:
+        data.append({
+            'Year': year,
+            'Premium': df['WLFR_PREMIUM_RCVD_AMT_PER_CAPITA'].mean(),
+            'Charges': df['WLFR_TOT_CHARGES_PAID_AMT_PER_CAPITA'].mean()
+        })
+
+# Convert to DataFrame
+df_annual = pd.DataFrame(data)
+
+# Sort by year
+df_annual = df_annual.sort_values('Year')
+
+# Calculate z-scores for the entire time series
+z_premium = np.abs(stats.zscore(df_annual['Premium']))
+z_charges = np.abs(stats.zscore(df_annual['Charges']))
+
+# Create mask for non-outlier data (99% confidence = z-score < 2.576)
+mask = (z_premium < 2.576) & (z_charges < 2.576)
+
+# Apply the mask
+df_filtered = df_annual[mask].copy()
+
+# Create the plot
+fig, ax = plt.subplots(figsize=(12, 6))
+
+# Plot both lines
+ax.plot(df_filtered['Year'], df_filtered['Premium'], 'b-o', label='Premium Received')
+ax.plot(df_filtered['Year'], df_filtered['Charges'], 'r-o', label='Total Charges Paid')
+
+# Customize the plot
+ax.set_xlabel('Year')
+ax.set_ylabel('Amount per Capita')
+ax.set_title('WLFR Premium Received and Total Charges Paid per Capita\n(2000-2023, 1% outliers removed)')
+ax.legend()
+ax.grid(True, alpha=0.3)
+
+# Set x-axis ticks for all years
+plt.xticks(df_filtered['Year'], rotation=45)
+
+# Adjust layout to prevent label cutoff
+plt.tight_layout()
+
+plt.show()
+
+```
+
+
+Parallel Trends visualization 
+
+```{python}
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Path to the file
+path = r"C:/Users/alexr/OneDrive/Desktop/WORK/490_thesis/Final"
+
+# Define ACA and non-ACA states
+aca_states = ['AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'HI', 'IL', 
+              'IN', 'IA', 'KY', 'LA', 'ME', 'MD', 'MA', 'MI', 'MN', 'MS', 
+              'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 
+              'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 'SD', 'UT', 'VT', 'VA', 'WA']
+
+non_aca_states = ['AL', 'FL', 'GA', 'ID', 'KS', 'TN', 'TX', 'WI', 'WY']
+
+# Initialize lists to store results
+years = range(1999, 2024)
+aca_means = []
+non_aca_means = []
+
+# Read the Excel file
+excel_file = pd.ExcelFile(f"{path}/processed_combined_data_1999-2023.xlsx")
+
+# Loop through all sheets
+for year in years:
+    sheet_name = f"Year_{year}"
+    df = pd.read_excel(excel_file, sheet_name=sheet_name)
+    
+    # Determine which state column to use based on the year
+    if year < 2009:
+        state_column = 'SPONS_DFE_STATE'
+    else:
+        state_column = 'SPONS_DFE_MAIL_US_STATE'
+    
+    # Check if required columns exist
+    if state_column not in df.columns:
+        print(f"Warning: {state_column} column not found in sheet {sheet_name}")
+        aca_means.append(np.nan)
+        non_aca_means.append(np.nan)
+        continue
+        
+    if 'WLFR_PREMIUM_RCVD_AMT_PER_CAPITA' not in df.columns:
+        print(f"Warning: WLFR_PREMIUM_RCVD_AMT_PER_CAPITA column not found in sheet {sheet_name}")
+        aca_means.append(np.nan)
+        non_aca_means.append(np.nan)
+        continue
+
+    # Calculate means for ACA and non-ACA states
+    aca_mean = df[df[state_column].isin(aca_states)]['WLFR_PREMIUM_RCVD_AMT_PER_CAPITA'].mean()
+    non_aca_mean = df[df[state_column].isin(non_aca_states)]['WLFR_PREMIUM_RCVD_AMT_PER_CAPITA'].mean()
+    
+    aca_means.append(aca_mean)
+    non_aca_means.append(non_aca_mean)
+
+# Create the plot
+plt.figure(figsize=(12, 6))
+
+# Plot lines for ACA and non-ACA states
+plt.plot(years, aca_means, 'b-', label='ACA States', linewidth=2)
+plt.plot(years, non_aca_means, 'r-', label='Non-ACA States', linewidth=2)
+
+# Add vertical line for ACA implementation
+plt.axvline(x=2010, color='gray', linestyle='--', label='ACA Implementation')
+
+# Customize the plot
+plt.xlabel('Year')
+plt.ylabel('Premium per Capita (USD)')
+plt.title('Average Premium per Capita: ACA vs Non-ACA States (1999-2023)')
+plt.legend()
+plt.grid(True, alpha=0.3)
+
+# Rotate x-axis labels for better readability
+plt.xticks(years, rotation=45)
+
+# Add tight layout to prevent label cutoff
+plt.tight_layout()
+
+plt.show()
+```
+
+```{python}
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Path to the file
+path = r"C:/Users/alexr/OneDrive/Desktop/WORK/490_thesis/Final"
+
+# Define ACA and non-ACA states
+aca_states = ['AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'HI', 'IL', 
+              'IN', 'IA', 'KY', 'LA', 'ME', 'MD', 'MA', 'MI', 'MN', 'MS', 
+              'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 
+              'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 'SD', 'UT', 'VT', 'VA', 'WA']
+
+non_aca_states = ['AL', 'FL', 'GA', 'ID', 'KS', 'TN', 'TX', 'WI', 'WY']
+
+# Initialize lists to store results
+years = [year for year in range(2001, 2024) if year != 2004]
+aca_means = []
+non_aca_means = []
+
+# Read the Excel file
+excel_file = pd.ExcelFile(f"{path}/processed_combined_data_1999-2023.xlsx")
+
+# Loop through all sheets except 1999, 2000, and 2004
+for year in years:
+    sheet_name = f"Year_{year}"
+    df = pd.read_excel(excel_file, sheet_name=sheet_name)
+    
+    # Determine which state column to use based on the year
+    if year < 2009:
+        state_column = 'SPONS_DFE_STATE'
+    else:
+        state_column = 'SPONS_DFE_MAIL_US_STATE'
+    
+    # Check if required columns exist
+    if state_column not in df.columns:
+        print(f"Warning: {state_column} column not found in sheet {sheet_name}")
+        aca_means.append(np.nan)
+        non_aca_means.append(np.nan)
+        continue
+        
+    if 'WLFR_PREMIUM_RCVD_AMT_PER_CAPITA' not in df.columns:
+        print(f"Warning: WLFR_PREMIUM_RCVD_AMT_PER_CAPITA column not found in sheet {sheet_name}")
+        aca_means.append(np.nan)
+        non_aca_means.append(np.nan)
+        continue
+
+    # Calculate means for ACA and non-ACA states
+    aca_mean = df[df[state_column].isin(aca_states)]['WLFR_PREMIUM_RCVD_AMT_PER_CAPITA'].mean()
+    non_aca_mean = df[df[state_column].isin(non_aca_states)]['WLFR_PREMIUM_RCVD_AMT_PER_CAPITA'].mean()
+    
+    aca_means.append(aca_mean)
+    non_aca_means.append(non_aca_mean)
+
+# Create the plot
+plt.figure(figsize=(12, 6))
+
+# Plot lines for ACA and non-ACA states
+plt.plot(years, aca_means, 'b-', label='ACA States', linewidth=2)
+plt.plot(years, non_aca_means, 'r-', label='Non-ACA States', linewidth=2)
+
+# Add vertical line for ACA implementation
+plt.axvline(x=2010, color='gray', linestyle='--', label='ACA Implementation')
+
+# Customize the plot
+plt.xlabel('Year')
+plt.ylabel('Premium per Capita (USD)')
+plt.title('Average Premium per Capita: ACA vs Non-ACA States (2001-2023, excluding 2004)')
+plt.legend()
+plt.grid(True, alpha=0.3)
+
+# Rotate x-axis labels for better readability
+plt.xticks(years, rotation=45)
+
+# Add tight layout to prevent label cutoff
+plt.tight_layout()
+
+plt.show()
+
+```
+
+First Attempt at Regression (we did not use this one)
+
+ ```{python}
+import pandas as pd
+import numpy as np
+import statsmodels.api as sm
+from scipy import stats
+
+# Path to the file
+path = r"C:/Users/alexr/OneDrive/Desktop/WORK/490_thesis/Final"
+
+# Define ACA and non-ACA states
+aca_states = ['AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'HI', 'IL', 
+              'IN', 'IA', 'KY', 'LA', 'ME', 'MD', 'MA', 'MI', 'MN', 'MS', 
+              'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 
+              'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 'SD', 'UT', 'VT', 'VA', 'WA']
+
+# Initialize lists to store data
+all_data = []
+
+# Read and process main data
+excel_file = pd.ExcelFile(f"{path}/processed_combined_data_1999-2023.xlsx")
+
+# Process each year's data
+for year in range(1999, 2024):
+    # Read sheet
+    df = pd.read_excel(excel_file, sheet_name=f"Year_{year}")
+    
+    # Determine state column
+    state_col = 'SPONS_DFE_MAIL_US_STATE' if year >= 2009 else 'SPONS_DFE_STATE'
+    
+    # Create ACA dummy
+    df['ACA_State'] = df[state_col].isin(aca_states).astype(int)
+    
+    # Create post-treatment dummy
+    df['Post_ACA'] = np.where(year >= 2010, 1, 0)
+    
+    # Create interaction term
+    df['ACA_x_Post'] = df['ACA_State'] * df['Post_ACA']
+    
+    # Add year
+    df['Year'] = year
+    
+    # Keep relevant columns
+    cols_to_keep = ['Year', 'ACA_State', 'Post_ACA', 'ACA_x_Post',
+                    'WLFR_PREMIUM_RCVD_AMT_PER_CAPITA',
+                    'WLFR_TOT_CHARGES_PAID_AMT_PER_CAPITA']
+    
+    all_data.append(df[cols_to_keep])
+
+# Combine all years
+panel_data = pd.concat(all_data, ignore_index=True)
+
+# Add small constant before log transformation to handle zeros
+min_premium = panel_data['WLFR_PREMIUM_RCVD_AMT_PER_CAPITA'][panel_data['WLFR_PREMIUM_RCVD_AMT_PER_CAPITA'] > 0].min()
+min_charges = panel_data['WLFR_TOT_CHARGES_PAID_AMT_PER_CAPITA'][panel_data['WLFR_TOT_CHARGES_PAID_AMT_PER_CAPITA'] > 0].min()
+
+panel_data['log_premium'] = np.log(panel_data['WLFR_PREMIUM_RCVD_AMT_PER_CAPITA'] + min_premium/2)
+panel_data['log_charges'] = np.log(panel_data['WLFR_TOT_CHARGES_PAID_AMT_PER_CAPITA'] + min_charges/2)
+
+# Function to run DiD regression and create summary
+def run_did_regression(y_var, X, title):
+    model = sm.OLS(y_var, X)
+    results = model.fit(cov_type='HC1')
+    
+    # Create results summary
+    coef_df = pd.DataFrame({
+        'Coefficient': results.params,
+        'Std Error': results.bse,
+        't-stat': results.tvalues,
+        'p-value': results.pvalues,
+        'CI Lower': results.conf_int()[0],
+        'CI Upper': results.conf_int()[1]
+    })
+    
+    print(f"\nDiD Results for {title}:")
+    print("----------------------------------------")
+    print(coef_df)
+    print(f"R-squared: {results.rsquared:.4f}")
+    print(f"Number of observations: {results.nobs}")
+    
+    # Diagnostic tests using scipy.stats
+    _, jb_pvalue = stats.jarque_bera(results.resid)
+    
+    print("\nDiagnostic Tests:")
+    print(f"Jarque-Bera test p-value: {jb_pvalue:.4f}")
+    
+    return results, coef_df
+
+# Run regressions
+X = sm.add_constant(panel_data[['ACA_State', 'Post_ACA', 'ACA_x_Post']])
+
+# Experience-Rated Plans (Premium)
+results1, coef_df1 = run_did_regression(panel_data['log_premium'], X, 
+                                      "Experience-Rated Plans (Premium)")
+
+# Non-Experience-Rated Plans (Charges)
+results2, coef_df2 = run_did_regression(panel_data['log_charges'], X, 
+                                      "Non-Experience-Rated Plans (Charges)")
+
+# Save results to Excel
+with pd.ExcelWriter(f"{path}/did_regression_results.xlsx") as writer:
+    coef_df1.to_excel(writer, sheet_name='Premium_Results')
+    coef_df2.to_excel(writer, sheet_name='Charges_Results')
+```
+
+Working Regression + Dynamic DiD Graph
+
+Working for the graph we want
+- WLFR_TOT_CHARGES_PAID_AMT_PER_CAPITA
+```{python}
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import statsmodels.api as sm
+from statsmodels.formula.api import ols
+
+# Path to the file
+excel_file = "C:/Users/alexr/OneDrive/Desktop/WORK/490_thesis/Final/processed_combined_data_1999-2023.xlsx"
+
+# List of ACA states
+aca_states = ['AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'HI', 'IL', 
+              'IN', 'IA', 'KY', 'LA', 'ME', 'MD', 'MA', 'MI', 'MN', 'MS', 
+              'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 
+              'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 'SD', 'UT', 'VT', 'VA', 'WA']
+
+# Initialize a list to store the dataframes for each year
+all_data = []
+
+# Process each year's data (excluding 1999, 2000, and 2004)
+for year in range(2001, 2024):
+    if year != 2004:
+        try:
+            # Read sheet
+            df = pd.read_excel(excel_file, sheet_name=f"Year_{year}")
+            
+            # Add Year column
+            df['Year'] = year
+            
+            # Determine the correct state column
+            state_col = 'SPONS_DFE_MAIL_US_STATE' if year >= 2009 else 'SPONS_DFE_STATE'
+            
+            # Add ACA indicator
+            df['ACA'] = df[state_col].isin(aca_states).astype(int)
+            
+            # Calculate per capita value, replacing infinities and NaNs with NaN
+            df['WLFR_TOT_CHARGES_PAID_AMT_PER_CAPITA'] = df['WLFR_TOT_CHARGES_PAID_AMT'] / df['INS_PRSN_COVERED_EOY_CNT']
+            df['WLFR_TOT_CHARGES_PAID_AMT_PER_CAPITA'] = df['WLFR_TOT_CHARGES_PAID_AMT_PER_CAPITA'].replace([np.inf, -np.inf], np.nan)
+            
+            all_data.append(df)
+        except Exception as e:
+            print(f"Failed to process Year_{year}: {e}")
+
+# Combine all data
+combined_data = pd.concat(all_data, ignore_index=True)
+
+# Remove rows with NaN or non-positive values in the dependent variable
+combined_data = combined_data[combined_data['WLFR_TOT_CHARGES_PAID_AMT_PER_CAPITA'] > 0]
+
+# Remove outliers (5% from each tail)
+combined_data = combined_data[combined_data['WLFR_TOT_CHARGES_PAID_AMT_PER_CAPITA'].between(
+    combined_data['WLFR_TOT_CHARGES_PAID_AMT_PER_CAPITA'].quantile(0.05),
+    combined_data['WLFR_TOT_CHARGES_PAID_AMT_PER_CAPITA'].quantile(0.95)
+)]
+
+# Log transform the Y variable
+combined_data['log_Y'] = np.log(combined_data['WLFR_TOT_CHARGES_PAID_AMT_PER_CAPITA'])
+
+# Create Post indicator
+combined_data['Post'] = (combined_data['Year'] >= 2010).astype(int)
+
+# Create interaction term
+combined_data['ACA_Post'] = combined_data['ACA'] * combined_data['Post']
+
+# Run regression
+model = ols('log_Y ~ ACA + Post + ACA_Post', data=combined_data).fit()
+
+# Print regression results
+print(model.summary())
+
+# Prepare data for event study graph
+event_study_data = []
+for year in range(2001, 2024):
+    if year != 2004:
+        year_data = combined_data[combined_data['Year'] == year]
+        aca_mean = year_data[year_data['ACA'] == 1]['log_Y'].mean()
+        non_aca_mean = year_data[year_data['ACA'] == 0]['log_Y'].mean()
+        if not np.isnan(aca_mean) and not np.isnan(non_aca_mean):
+            diff = aca_mean - non_aca_mean
+            event_study_data.append({'Year': year, 'Diff': diff})
+
+event_study_df = pd.DataFrame(event_study_data)
+event_study_df['Time'] = event_study_df['Year'] - 2010
+
+# Previous code remains the same until the plotting section
+
+# Create event study graph with confidence intervals
+plt.figure(figsize=(12, 6))
+
+# Calculate 95% confidence intervals
+ci = 1.96 * event_study_df['Diff'].std()
+
+# Plot points and confidence intervals
+plt.errorbar(event_study_df['Time'], 
+            event_study_df['Diff'], 
+            yerr=ci,
+            fmt='o-',
+            capsize=5,
+            capthick=1,
+            elinewidth=1,
+            markersize=5,
+            color='blue',
+            label='Estimated Effect')
+
+plt.axvline(x=0, color='r', linestyle='--', label='ACA Implementation')
+plt.axhline(y=0, color='k', linestyle='-')
+
+# Adjust axes
+plt.xlim(-10, 15)  # Extend x-axis range
+plt.ylim(-0.5, 0.5)  # Adjust y-axis range
+
+# Add labels and title
+plt.xlabel('Years Relative to ACA Implementation')
+plt.ylabel('Difference in Log Per Capita Charges Paid')
+plt.title('Event Study: Impact of ACA on Per Capita Charges Paid')
+
+# Add grid and legend
+plt.grid(True, linestyle='--', alpha=0.7)
+plt.legend()
+
+# Adjust layout to prevent label cutoff
+plt.tight_layout()
+
+plt.show()
+
+
+```
+
+Now for variable WLFR_PREMIUM_RCVD_AMT_PER_CAPITA
+- same code
+
+```{python}
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import statsmodels.api as sm
+from statsmodels.formula.api import ols
+
+# Path to the file
+excel_file = "C:/Users/alexr/OneDrive/Desktop/WORK/490_thesis/Final/processed_combined_data_1999-2023.xlsx"
+
+# List of ACA states
+aca_states = ['AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'HI', 'IL', 
+              'IN', 'IA', 'KY', 'LA', 'ME', 'MD', 'MA', 'MI', 'MN', 'MS', 
+              'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 
+              'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 'SD', 'UT', 'VT', 'VA', 'WA']
+
+# Initialize a list to store the dataframes for each year
+all_data = []
+
+# Process each year's data (excluding 1999, 2000, and 2004)
+for year in range(2001, 2024):
+    if year != 2004:
+        try:
+            # Read sheet
+            df = pd.read_excel(excel_file, sheet_name=f"Year_{year}")
+            
+            # Add Year column
+            df['Year'] = year
+            
+            # Determine the correct state column
+            state_col = 'SPONS_DFE_MAIL_US_STATE' if year >= 2009 else 'SPONS_DFE_STATE'
+            
+            # Add ACA indicator
+            df['ACA'] = df[state_col].isin(aca_states).astype(int)
+            
+            # Calculate per capita value, replacing infinities and NaNs with NaN
+            df['WLFR_PREMIUM_RCVD_AMT_PER_CAPITA'] = df['WLFR_PREMIUM_RCVD_AMT'] / df['INS_PRSN_COVERED_EOY_CNT']
+            df['WLFR_PREMIUM_RCVD_AMT_PER_CAPITA'] = df['WLFR_PREMIUM_RCVD_AMT_PER_CAPITA'].replace([np.inf, -np.inf], np.nan)
+            
+            all_data.append(df)
+        except Exception as e:
+            print(f"Failed to process Year_{year}: {e}")
+
+# Combine all data
+combined_data = pd.concat(all_data, ignore_index=True)
+
+# Remove rows with NaN or non-positive values in the dependent variable
+combined_data = combined_data[combined_data['WLFR_PREMIUM_RCVD_AMT_PER_CAPITA'] > 0]
+
+# Remove outliers (5% from each tail)
+combined_data = combined_data[combined_data['WLFR_PREMIUM_RCVD_AMT_PER_CAPITA'].between(
+    combined_data['WLFR_PREMIUM_RCVD_AMT_PER_CAPITA'].quantile(0.05),
+    combined_data['WLFR_PREMIUM_RCVD_AMT_PER_CAPITA'].quantile(0.95)
+)]
+
+# Log transform the Y variable
+combined_data['log_Y'] = np.log(combined_data['WLFR_PREMIUM_RCVD_AMT_PER_CAPITA'])
+
+# Create Post indicator
+combined_data['Post'] = (combined_data['Year'] >= 2010).astype(int)
+
+# Create interaction term
+combined_data['ACA_Post'] = combined_data['ACA'] * combined_data['Post']
+
+# Run regression
+model = ols('log_Y ~ ACA + Post + ACA_Post', data=combined_data).fit()
+
+# Print regression results
+print(model.summary())
+
+# Prepare data for event study graph
+event_study_data = []
+for year in range(2001, 2024):
+    if year != 2004:
+        year_data = combined_data[combined_data['Year'] == year]
+        aca_mean = year_data[year_data['ACA'] == 1]['log_Y'].mean()
+        non_aca_mean = year_data[year_data['ACA'] == 0]['log_Y'].mean()
+        if not np.isnan(aca_mean) and not np.isnan(non_aca_mean):
+            diff = aca_mean - non_aca_mean
+            event_study_data.append({'Year': year, 'Diff': diff})
+
+event_study_df = pd.DataFrame(event_study_data)
+event_study_df['Time'] = event_study_df['Year'] - 2010
+
+# Previous code remains the same until the plotting section
+
+# Create event study graph with confidence intervals
+plt.figure(figsize=(12, 6))
+
+# Calculate 95% confidence intervals
+ci = 1.96 * event_study_df['Diff'].std()
+
+# Plot points and confidence intervals
+plt.errorbar(event_study_df['Time'], 
+            event_study_df['Diff'], 
+            yerr=ci,
+            fmt='o-',
+            capsize=5,
+            capthick=1,
+            elinewidth=1,
+            markersize=5,
+            color='blue',
+            label='Estimated Effect')
+
+plt.axvline(x=0, color='r', linestyle='--', label='ACA Implementation')
+plt.axhline(y=0, color='k', linestyle='-')
+
+# Adjust axes
+plt.xlim(-10, 15)  # Extend x-axis range
+plt.ylim(-1, 1)  # Adjust y-axis range
+
+# Add labels and title
+plt.xlabel('Years Relative to ACA Implementation')
+plt.ylabel('Difference in Log Per Capita Premiums Received')
+plt.title('Event Study: Impact of ACA on Per Capita Premiums Received')
+
+# Add grid and legend
+plt.grid(True, linestyle='--', alpha=0.7)
+plt.legend()
+
+# Adjust layout to prevent label cutoff
+plt.tight_layout()
+
+plt.show()
