@@ -1,0 +1,13 @@
+Code/DML_Analysis.ipynb
+Code/DML_Analysis_executed.ipynb
+Results/figures/twfe_vs_dml_comparison.png
+Results/tables/dml_state_fe_robustness.csv
+
+# Raw data (too large, re-downloadable)
+Datasets/new_Form_5500/
+Datasets/covariates/bls_lau/la.data.*
+Datasets/plan_level_data.parquet
+
+__pycache__/
+*.pyc
+.ipynb_checkpoints/

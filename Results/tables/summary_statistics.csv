@@ -1,0 +1,7 @@
+Full Sample,N,Mean,SD,Min,Median,Max
+mean_log_premium_exp,1173.0,6.55,0.46,5.15,6.51,7.91
+mean_premium_exp,1173.0,1805.25,860.18,256.02,1627.5,5392.72
+n_plans_exp,1173.0,435.47,467.73,5.0,305.0,3370.0
+mean_log_premium_nonexp,1173.0,5.96,0.24,5.11,5.95,6.86
+mean_premium_nonexp,1173.0,1073.9,323.12,349.25,1047.47,2675.88
+n_plans_nonexp,1173.0,3687.39,4599.19,83.0,2165.0,31379.0
