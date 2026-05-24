@@ -1,3 +1,0 @@
-Because our main dataset is 409.102mbs I will send a link to direct download the zip with it.
-
-Link: https://www.emplus.net/clients/490/490_dataset.zip

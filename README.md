@@ -12,7 +12,7 @@ Originally an Econ 490 project with Ameesh Kumar. Estimates the causal effect of
 
 ## Code
 
-Run the scripts from the `Code/` directory (paths are relative). Pipeline runs in order:
+Install dependencies with `pip install -r requirements.txt`. Run the scripts from the `Code/` directory (paths are relative). Pipeline runs in order:
 
 1. `Code/01_download_covariates.py` — pulls covariate data from Census, BLS, CMS
 2. `Code/02_merge_data.py` — merges Form 5500 with covariates, computes state-year aggregates
@@ -22,10 +22,26 @@ Run the scripts from the `Code/` directory (paths are relative). Pipeline runs i
 ## Methods
 
 - Two-way fixed effects DiD as baseline
-- Event study with staggered adoption (8 expansion cohorts, 2014-2023)
+- Event study with staggered adoption (7 expansion cohorts, 2014-2023)
 - Double/debiased machine learning (Chernozhukov et al. 2018) with RF, GBR, and Lasso learners
 - Primary DML specification includes state fixed effects for within-state identification
 
 ## Results
 
 Figures and tables are saved to `Results/`. The main comparison table is in `Results/tables/twfe_vs_dml_comparison.csv`.
+
+## Citation
+
+If you use this code or data, please cite:
+
+> Ronczewski, A. (2026). *Medicaid Expansion and Employer-Sponsored Insurance Premiums.* Working paper, SSRN. [link]
+
+```bibtex
+@techreport{ronczewski2026medicaid,
+  title       = {Medicaid Expansion and Employer-Sponsored Insurance Premiums},
+  author      = {Ronczewski, Alex},
+  year        = {2026},
+  type        = {Working paper},
+  institution = {SSRN}
+}
+```

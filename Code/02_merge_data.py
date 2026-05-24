@@ -16,7 +16,7 @@ import warnings
 warnings.filterwarnings('ignore')
 
 # ── Paths (relative to the Code/ directory — run this script from there) ─────
-# Processed Form 5500 data (~400MB, downloaded separately — see Datasets/Location_of_main_data.txt)
+# Processed Form 5500 data (~400MB, not included — built from raw Form 5500 filings; see README "Data")
 DATA_PATH = '../Datasets/processed_combined_data_1999-2023.xlsx'
 COV_DIR = '../Datasets/covariates'
 OUT_DIR = '../Datasets'
