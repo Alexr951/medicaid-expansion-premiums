@@ -12,12 +12,12 @@ Originally an Econ 490 project with Ameesh Kumar. Estimates the causal effect of
 
 ## Code
 
-Pipeline runs in order:
+Run the scripts from the `Code/` directory (paths are relative). Pipeline runs in order:
 
 1. `Code/01_download_covariates.py` — pulls covariate data from Census, BLS, CMS
 2. `Code/02_merge_data.py` — merges Form 5500 with covariates, computes state-year aggregates
 3. `Code/parse_raw_covariates.py` — helper for processing raw BLS files
-4. `Code/DML_Analysis_revised.ipynb` — main analysis notebook (TWFE, event study, DML, robustness checks)
+4. `Code/DML_Analysis.ipynb` — main analysis notebook (TWFE, event study, DML, robustness checks)
 
 ## Methods
 

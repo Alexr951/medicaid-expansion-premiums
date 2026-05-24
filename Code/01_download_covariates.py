@@ -9,7 +9,7 @@ Sources:
 - KFF / hardcoded: Medicaid expansion status, marketplace type
 - CMS: Per-capita healthcare spending (placeholder)
 
-Run: python Code/01_download_covariates.py
+Run from the Code/ directory: python 01_download_covariates.py
 """
 
 import pandas as pd
@@ -20,7 +20,7 @@ import os
 import warnings
 warnings.filterwarnings('ignore')
 
-OUTPUT_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'Datasets', 'covariates')
+OUTPUT_DIR = '../Datasets/covariates'
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # State FIPS mapping

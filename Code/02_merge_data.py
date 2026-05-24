@@ -6,7 +6,7 @@ Produces:
   - Datasets/dml_analysis_data.csv  (state-year level, main DML dataset)
   - Datasets/plan_level_data.parquet (plan-level, for robustness checks)
 
-Run: python Code/02_merge_data.py
+Run from the Code/ directory: python 02_merge_data.py
 """
 
 import pandas as pd
@@ -15,11 +15,11 @@ import os
 import warnings
 warnings.filterwarnings('ignore')
 
-# ── Paths ──────────────────────────────────────────────────────────────────
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-DATA_PATH = r"C:/Users/alexr/OneDrive/Desktop/WORK/490_thesis/Final/processed_combined_data_1999-2023.xlsx"
-COV_DIR = os.path.join(BASE_DIR, 'Datasets', 'covariates')
-OUT_DIR = os.path.join(BASE_DIR, 'Datasets')
+# ── Paths (relative to the Code/ directory — run this script from there) ─────
+# Processed Form 5500 data (~400MB, downloaded separately — see Datasets/Location_of_main_data.txt)
+DATA_PATH = '../Datasets/processed_combined_data_1999-2023.xlsx'
+COV_DIR = '../Datasets/covariates'
+OUT_DIR = '../Datasets'
 
 # ── ACA state definitions ─────────────────────────────────────────────────
 ACA_STATES = [
@@ -373,7 +373,7 @@ def main():
     print_summary(merged)
 
     # Also save summary stats to Results
-    results_dir = os.path.join(BASE_DIR, 'Results', 'tables')
+    results_dir = '../Results/tables'
     os.makedirs(results_dir, exist_ok=True)
     summary_path = os.path.join(results_dir, 'summary_statistics.csv')
     summary_cols = [c for c in merged.columns if not c.startswith('year_')]

@@ -1,9 +1,12 @@
-"""Parse BLS LAUS and CMS health expenditure raw data into clean CSVs."""
+"""Parse BLS LAUS and CMS health expenditure raw data into clean CSVs.
+
+Run from the Code/ directory: python parse_raw_covariates.py
+"""
 import pandas as pd
 import numpy as np
 import os
 
-OUTPUT_DIR = "D:/GitHub/Econ490Project/Datasets/covariates"
+OUTPUT_DIR = "../Datasets/covariates"
 BLS_DIR = os.path.join(OUTPUT_DIR, "bls_lau")
 CMS_FILE = os.path.join(OUTPUT_DIR, "cms_state_health_expenditure", "Residence_all_tables.xlsx")
 
