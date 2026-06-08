@@ -2,7 +2,7 @@
 
 The paper is in `Medicaid_Expansion_Premiums.pdf`.
 
-Originally an Econ 490 project with Ameesh Kumar. Estimates the causal effect of state Medicaid expansion on employer-sponsored health insurance premiums using Form 5500 filings (2001-2024).
+Originally an Econ 490 project with Ameesh Perchani. Estimates the causal effect of state Medicaid expansion on employer-sponsored health insurance premiums using Form 5500 filings (2001-2024).
 
 ## Data
 
