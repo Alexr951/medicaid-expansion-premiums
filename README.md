@@ -34,7 +34,7 @@ Figures and tables are saved to `Results/`. The main comparison table is in `Res
 
 If you use this code or data, please cite:
 
-> Ronczewski, A. (2026). *Medicaid Expansion and Employer-Sponsored Insurance Premiums.* Working paper, SSRN. [link]
+> Ronczewski, A. (2026). *Medicaid Expansion and Employer-Sponsored Insurance Premiums.* Working paper, SSRN. [[link](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6823860)]
 
 ```bibtex
 @techreport{ronczewski2026medicaid,
@@ -42,6 +42,7 @@ If you use this code or data, please cite:
   author      = {Ronczewski, Alex},
   year        = {2026},
   type        = {Working paper},
-  institution = {SSRN}
+  institution = {SSRN},
+  url         = {https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6823860}
 }
 ```
