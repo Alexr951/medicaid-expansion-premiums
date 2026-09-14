@@ -1,5 +1,7 @@
 # Medicaid Expansion and Employer-Sponsored Insurance Premiums
 
+[![DOI](https://img.shields.io/badge/DOI-10.2139%2Fssrn.6823860-blue.svg)](https://doi.org/10.2139/ssrn.6823860)
+
 The paper is in `Medicaid_Expansion_Premiums.pdf`.
 
 Originally an Econ 490 project with Ameesh Perchani. Estimates the causal effect of state Medicaid expansion on employer-sponsored health insurance premiums using Form 5500 filings (2001-2024).
