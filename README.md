@@ -48,3 +48,13 @@ If you use this code or data, please cite:
   url         = {https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6823860}
 }
 ```
+
+## License
+
+[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
+
+Code, data, and text in this repository are licensed under
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). You are free to share
+and adapt the material for any purpose, including commercially, provided you give
+appropriate credit (see [Citation](#citation)), link to the license, and indicate
+if changes were made.
